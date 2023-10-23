@@ -1,0 +1,44 @@
+<style type=text/css>
+
+.container {
+width:99.5% !important; }  
+
+h1 {
+  border: solid blue 2px;
+  padding: 8px 12px;
+  background-image: linear-gradient(180deg, #fff, rgb(124, 153, 247));
+  text-align: left;
+  color:blue;
+  font-family:Courier;font-size:2.0em;padding: 0.5em;
+  position: static;
+}
+
+
+div.principal {
+  text-align: center;
+  border: solid blue 2px; 
+  background-color: #4be3e3;
+  color:blue;font-family:Courier;font-size:2.0em;padding: 0.5em;}
+}
+div.normal {
+  text-align: center;
+  border: solid red 2px; 
+  background-color: #e3b84b;
+  color:blue;font-family:Courier;font-size:2.0em;padding: 0.5em;}
+}
+
+div.cell {
+    width:200% !important;
+    margin: 5px !important;
+    /* margin-left:2px !important; */
+    /* margin-right:2px !important; */
+    padding: 2px !important;
+    /* the following overrides the background color of the input area */
+    /* background-color: yellow !important;  */
+    /* border-color: black !important; */
+    
+}
+
+
+</style>
+
