@@ -34,7 +34,7 @@ sns.set(style="darkgrid")
 # ------------------------------------------------------------------------
 @st.cache_data 
 def carregar_dados_taes():
-    data = pd.read_csv("../data/dados_ies_taes_docentes_2012_2022.csv", low_memory=False)
+    data = pd.read_csv("../arquivos/dados_ies_taes_docentes_2012_2022.csv", low_memory=False)
     return data
 ies = carregar_dados_taes() 
 
