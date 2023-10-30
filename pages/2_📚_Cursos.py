@@ -40,7 +40,7 @@ sns.set(style="darkgrid")
 st.cache_data
 # carregar algumas colunas pois a carga do df é demorado
 def carrega_df():
-	df_all = pd.read_csv('../arquivos/dados_cursos_2012_2022.csv', sep='|', 
+	df_all = pd.read_csv('./arquivos/dados_cursos_2012_2022.csv', sep='|', 
 						low_memory=False, 
 						usecols=['NU_ANO_CENSO','Tipo_Cat_Admn','Tipo_Org_Acad','Tipo_Org_Principal', 'Tipo_Grau_Acad','Tipo_Rede',
 						'NO_CINE_AREA_GERAL', 'NO_CURSO'])
@@ -318,7 +318,7 @@ def formata_area_geral(x):
 st.cache_data
 # carregar algumas colunas pois a carga do df é demorado
 def carrega_df():
-	df_all = pd.read_csv('../arquivos/dados_cursos_2012_2022.csv', sep='|', 
+	df_all = pd.read_csv('./arquivos/dados_cursos_2012_2022.csv', sep='|', 
 						low_memory=False, 
 						usecols=['NU_ANO_CENSO','NO_CINE_AREA_GERAL','QT_CURSO','QT_MAT','QT_ING','QT_CONC'])
 	return df_all
@@ -414,7 +414,7 @@ dict_dtype = {column : 'str'  for column in colunas_CO}
 
 st.cache_data
 def carrega_df():
-	cursos = pd.read_csv('../arquivos/dados_cursos_escopo_consolidado_2022.csv', sep='|', 
+	cursos = pd.read_csv('./arquivos/dados_cursos_escopo_consolidado.csv', sep='|', 
                   dtype = dict_dtype, 
                   low_memory=False)			  
 	return cursos

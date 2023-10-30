@@ -22,8 +22,7 @@ st.markdown("---")
 colunas_CO = ['CO_REGIAO_IES',  'CO_UF_IES', 'CO_MESORREGIAO_IES', 'CO_MICRORREGIAO_IES',
  'CO_MANTENEDORA', 'CO_IES', 'COD_IBGE', 'IN_CAPITAL_IES', 'NU_CEP_IES']
 dict_dtype = {column : 'str'  for column in colunas_CO}
-ies = pd.read_csv('./arquivos/Dados Preparados/dados_ies_consolidado.csv', sep='|', 
-                  dtype = dict_dtype, low_memory=False)
+ies = pd.read_csv('./arquivos/dados_ies_consolidado.csv', sep='|', dtype = dict_dtype, low_memory=False)
 				 
 distr_cat_org_br = ies.groupby(['Tipo_Cat_Admn','Tipo_Org_Acad'])['CO_IES'].count().reset_index()
 distr_cat_org_br = distr_cat_org_br.rename(columns={'CO_IES':'Total_IES'})
@@ -34,7 +33,7 @@ distr_cat_org_br = distr_cat_org_br.rename(columns={'CO_IES':'Total_IES'})
 # Carrega dados IES agregados por UF
 # ------------------------------------------------------------------------
 
-ies_agg_UF = pd.read_csv('./arquivos/Dados Preparados/dados_ies_agg_UF.csv', sep='|', 
+ies_agg_UF = pd.read_csv('./arquivos/dados_ies_agg_UF.csv', sep='|', 
                    low_memory=False)
 
 # renomear colunas para nomes mais intuitivos
@@ -97,7 +96,7 @@ distr_ies_tp_uf = pd.DataFrame({'Total_IES'   : tot_ies_tp_uf,
 # Carrega dados IES agregados por Região
 #------------------------------------------------------------------------------------------
 
-ies_agg_regiao = pd.read_csv('./arquivos/Dados Preparados/dados_IES_agg_Regiao.csv', sep='|', 
+ies_agg_regiao = pd.read_csv('./arquivos/dados_IES_agg_Regiao.csv', sep='|', 
                    low_memory=False)
 
 ies_agg_regiao = ies_agg_regiao.rename(columns={'Total_mun':'Total_mun_IES',

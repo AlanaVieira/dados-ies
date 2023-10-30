@@ -3,7 +3,7 @@ import streamlit as st
 import altair as alt
 from streamlit_option_menu import option_menu
 from PIL import Image
-import plotly_express as px
+import plotly.express as px
 from numerize.numerize import numerize
 import os
 import requests
@@ -28,7 +28,7 @@ st.set_page_config(
 ####### --- Criar o dataframe########################
 
 df = pd.read_csv('./arquivos/MICRODADOS_ED_SUP_IES_2022.CSV', encoding='latin-1', sep=';')
-df_ies = pd.read_csv('./arquivos/Dados Preparados/dados_cursos_escopo_consolidado.csv', encoding='utf-8', sep='|')
+df_ies = pd.read_csv('./arquivos/dados_cursos_escopo_consolidado.csv', encoding='utf-8', sep='|')
 
 header_left, header_mid, header_right = st.columns([1, 3, 1], gap="large")
 ##############################################################################
