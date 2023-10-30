@@ -37,7 +37,8 @@ sns.set(style="darkgrid")
 # ------------------------------------------------------------------------
 # Carrega dados Cursos
 # ------------------------------------------------------------------------
-st.cache_data
+
+@st.cache_data
 # carregar algumas colunas pois a carga do df é demorado
 def carrega_df():
 	df_all = pd.read_csv('./arquivos/dados_cursos_2012_2022.csv', sep='|', 
@@ -166,8 +167,11 @@ with col1:
 	fig.update_traces(textposition='inside', insidetextfont=dict(color='white', size=16,family='Times New Roman'))
 
 	st.plotly_chart(fig, use_container_width=True)
-
-
+# ------------------------------------------------------------------------
+# Plot02: Análise
+# ------------------------------------------------------------------------
+st.subheader("Principais Resultados")
+st.write("Breve explicação dos resultados.")
 # ------------------------------------------------------------------------
 # Plot03: Evolução da Qtd de Cursos ofertados/ Organizacao Academica (linha)
 # ------------------------------------------------------------------------	
@@ -234,40 +238,40 @@ st.markdown("---")
 # ------------------------------------------------------------------------
 # Plot05: Evolução da Qtd de Cursos ofertados/ Area Geral (linha) 
 # ------------------------------------------------------------------------	
-titulo_plot05 =  '<p style="font-family:Courier; color:Black; font-size: 23px;"><b>Evolução da Quantidade de Cursos por Area Geral</b></p>'
-st.markdown(titulo_plot05, unsafe_allow_html=True)
+#titulo_plot05 =  '<p style="font-family:Courier; color:Black; font-size: 23px;"><b>Evolução da Quantidade de Cursos por Area Geral</b></p>'
+#st.markdown(titulo_plot05, unsafe_allow_html=True)
 
-ano_min = evol_cursos_area['NU_ANO_CENSO'].min()
-ano_max = evol_cursos_area['NU_ANO_CENSO'].max()
+#ano_min = evol_cursos_area['NU_ANO_CENSO'].min()
+#ano_max = evol_cursos_area['NU_ANO_CENSO'].max()
 
 # necessidade de criar paleta de cores
-palette_11cores = ["#F72585", "#7209B7", "#3A0CA3", "#4361EE", "#4CC9F0", #rosa escuro, roxo, roxo escuro, azul escuro, azul agua
-                   '#00cc00', # verde claro
-                   '#00661a', # verde escuro
-                   '#ffbf00',  # laranja
-                   '#cc0000', # vermelho
-                   '#66001a', # vermelho vinho
-                   '#ffff66' # amarelo
-                   ]
+#palette_11cores = ["#F72585", "#7209B7", "#3A0CA3", "#4361EE", "#4CC9F0", #rosa escuro, roxo, roxo escuro, azul escuro, azul agua
+#                   '#00cc00', # verde claro
+#                   '#00661a', # verde escuro
+#                   '#ffbf00',  # laranja
+#                   '#cc0000', # vermelho
+#                   '#66001a', # vermelho vinho
+#                   '#ffff66' # amarelo
+#                   ]
 
-f, axes = plt.subplots(1, 1,  figsize=(20,8))
+#f, axes = plt.subplots(1, 1,  figsize=(20,8))
 
-axes = sns.pointplot(x='NU_ANO_CENSO', y='Total_cursos', hue='NO_CINE_AREA_GERAL',
-            data=evol_cursos_area.sort_values(by=('NU_ANO_CENSO'), ascending=False),
-            label="Total Cursos", markers='o', palette=palette_11cores)
+#axes = sns.pointplot(x='NU_ANO_CENSO', y='Total_cursos', hue='NO_CINE_AREA_GERAL',
+#            data=evol_cursos_area.sort_values(by=('NU_ANO_CENSO'), ascending=False),
+#            label="Total Cursos", markers='o', palette=palette_11cores)
 
 #axes.set_title(" ", fontsize=20)
-axes.set_xticklabels(axes.get_xticklabels(), rotation=0, ha="right", fontsize=16)
-axes.set(xlabel=''); axes.set_ylabel('Total Cursos', fontsize=18)
-axes.tick_params(axis='y', labelsize=14)
+#axes.set_xticklabels(axes.get_xticklabels(), rotation=0, ha="right", fontsize=16)
+#axes.set(xlabel=''); axes.set_ylabel('Total Cursos', fontsize=18)
+#axes.tick_params(axis='y', labelsize=14)
 
-axes.grid(color='gray', linestyle='--', linewidth=1.2, axis='y', alpha=.2)
+#axes.grid(color='gray', linestyle='--', linewidth=1.2, axis='y', alpha=.2)
 
 #axes.legend(loc='best', fontsize=18)
-axes.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), fancybox=True, shadow=True, ncol=2,
-           fontsize='x-large')
+#axes.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), fancybox=True, shadow=True, ncol=2,
+#           fontsize='x-large')
 		   
-st.pyplot(f)
+#st.pyplot(f)
 st.markdown("---")		   
 
 # ------------------------------------------------------------------------
@@ -338,27 +342,39 @@ distr_cursos = distr_cursos.groupby(['NU_ANO_CENSO','NO_CINE_AREA_GERAL']).\
 
 distr_cursos['AREA_GERAL'] = distr_cursos['NO_CINE_AREA_GERAL'].apply(lambda x: formata_area_geral(x))
 
+
+
 # ------------------------------------------------------------------------
 # Plot 01: Treemap de Cursos e Matriculas
 # ------------------------------------------------------------------------	
 l_anos = range(2012,2023,1)
 
-for ano in l_anos:
-	titulo_plot01 =  '<p style="font-family:Courier; color:Black; font-size: 23px;"><b>Treemap de Cursos e Matriculas para o ano de ' + str(ano) + '</b></p>'
-	st.markdown(titulo_plot01, unsafe_allow_html=True)
+# Adicionando um widget de seleção para escolher o ano
+#ano_selecionado = st.selectbox("Selecione o ano", l_anos)
+
+#for ano in l_anos:
+#	titulo_plot01 =  '<p style="font-family:Courier; color:Black; font-size: 23px;"><b>Treemap de Cursos e Matriculas para o ano de ' + str(ano) + '</b></p>'
+#	st.markdown(titulo_plot01, unsafe_allow_html=True)
+# Adicionar um widget de seleção para escolher o ano
+ano_selecionado = st.selectbox("Selecione o ano", l_anos)
+
+# Verificar se um ano foi selecionado
+if ano_selecionado:
+    titulo_plot01 = f'<p style="font-family:Courier; color:Black; font-size: 23px;"><b>Treemap de Cursos e Matrículas para o ano de {ano_selecionado}</b></p>'
+st.markdown(titulo_plot01, unsafe_allow_html=True)
+
+fig = px.treemap(distr_cursos[distr_cursos['NU_ANO_CENSO']==ano_selecionado], 
+path = [px.Constant('Area Geral'), 'AREA_GERAL'], 
+values = 'QT_CURSO',  
+color_continuous_scale='RdBu', 
+color = 'QT_MAT', 
+width=400, height=500)
     
-	fig = px.treemap(distr_cursos[distr_cursos['NU_ANO_CENSO']==ano], 
-	path = [px.Constant('Area Geral'), 'AREA_GERAL'], 
-	values = 'QT_CURSO',  
-	color_continuous_scale='RdBu', 
-	color = 'QT_MAT', 
-	width=400, height=500)
-    
-	fig.update_layout(margin = dict(t=20, l=25, r=25, b=25))
-	fig.update_traces(textposition='middle left', textfont_size=18)
-	fig.update_traces(textposition='middle left', textfont_size=18)
+fig.update_layout(margin = dict(t=20, l=25, r=25, b=25))
+fig.update_traces(textposition='middle left', textfont_size=18)
+fig.update_traces(textposition='middle left', textfont_size=18)
 	
-	st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, use_container_width=True)
 
 
 
@@ -412,7 +428,7 @@ colunas_CO = ['CO_REGIAO', 'CO_UF', 'CO_MUNICIPIO', 'CO_IES', 'CO_CURSO',
 dict_dtype = {column : 'str'  for column in colunas_CO}
 
 
-st.cache_data
+@st.cache_data
 def carrega_df():
 	cursos = pd.read_csv('./arquivos/dados_cursos_escopo_consolidado.csv', sep='|', 
                   dtype = dict_dtype, 
@@ -657,68 +673,159 @@ distr_cursos_reg_area_N = distr_cursos_reg_area[distr_cursos_reg_area['NO_REGIAO
 distr_cursos_reg_area_CO = distr_cursos_reg_area[distr_cursos_reg_area['NO_REGIAO']=='Centro-Oeste']
 
 
-fig_NE = px.bar(distr_cursos_reg_area_NE.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
-             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
-             color_discrete_sequence=px.colors.diverging.Spectral,
-             barmode = 'group', width=1000, height=700)
-fig_NE.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
-                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9)) 
-                  
-fig_SE = px.bar(distr_cursos_reg_area_SE.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
-             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
-             color_discrete_sequence=px.colors.diverging.Spectral, 
-             barmode = 'group', width=1000, height=700)
-fig_SE.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
-                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9))     
-                  
-fig_S = px.bar(distr_cursos_reg_area_S.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
-             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
-             color_discrete_sequence=px.colors.diverging.Spectral,
-             barmode = 'group', width=1000, height=700)
-fig_S.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
-                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9)) 
-                  
-fig_N = px.bar(distr_cursos_reg_area_N.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
-             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
-             color_discrete_sequence=px.colors.diverging.Spectral,
-             barmode = 'group', width=1000, height=700)
-fig_N.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
-                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9))    
-
-fig_CO = px.bar(distr_cursos_reg_area_CO.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
-             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
-             color_discrete_sequence=px.colors.diverging.Spectral,
-             barmode = 'group', width=1000, height=700)
-fig_CO.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
-                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9))
+#fig_NE = px.bar(distr_cursos_reg_area_NE.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
+#             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
+#             color_discrete_sequence=px.colors.diverging.Spectral,
+#             barmode = 'group', width=1000, height=700)
+#fig_NE.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
+#                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9)) 
+#                  
+#fig_SE = px.bar(distr_cursos_reg_area_SE.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
+#             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
+#             color_discrete_sequence=px.colors.diverging.Spectral, 
+#             barmode = 'group', width=1000, height=700)
+#fig_SE.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
+#                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9))     
+#                  
+#fig_S = px.bar(distr_cursos_reg_area_S.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
+#             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
+#             color_discrete_sequence=px.colors.diverging.Spectral,
+#             barmode = 'group', width=1000, height=700)
+#fig_S.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
+#                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9)) 
+#                  
+#fig_N = px.bar(distr_cursos_reg_area_N.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
+#             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
+#             color_discrete_sequence=px.colors.diverging.Spectral,
+#             barmode = 'group', width=1000, height=700)
+#fig_N.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
+#                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9))    
+#
+#fig_CO = px.bar(distr_cursos_reg_area_CO.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
+#             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
+#             color_discrete_sequence=px.colors.diverging.Spectral,
+#             barmode = 'group', width=1000, height=700)
+#fig_CO.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
+#                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9))
                   
                   
 # ------------------------------------------------------------------------
 # Prepara pagina para 2 colunas
 # ------------------------------------------------------------------------
 
-col1, col2 = st.columns(2)
-with col1: 
-	titulo_plot06a =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Nordeste</b></p>'
-	st.markdown(titulo_plot06a, unsafe_allow_html=True)
-	st.plotly_chart(fig_NE, use_container_width=True)
+#col1, col2 = st.columns(2)
+#with col1: 
+#	titulo_plot06a =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Nordeste</b></p>'
+#	st.markdown(titulo_plot06a, unsafe_allow_html=True)
+#	st.plotly_chart(fig_NE, use_container_width=True)
 
-with col2: 
-	titulo_plot06b =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Norte</b></p>'
-	st.markdown(titulo_plot06b, unsafe_allow_html=True)
-	st.plotly_chart(fig_N, use_container_width=True)
+#with col2: 
+#	titulo_plot06b =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Norte</b></p>'
+#	st.markdown(titulo_plot06b, unsafe_allow_html=True)
+#	st.plotly_chart(fig_N, use_container_width=True)
 
-col1, col2 = st.columns(2)
-with col1: 
-	titulo_plot06c =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Sul</b></p>'
-	st.markdown(titulo_plot06c, unsafe_allow_html=True)
-	st.plotly_chart(fig_S, use_container_width=True)
+#col1, col2 = st.columns(2)
+#with col1: 
+#	titulo_plot06c =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Sul</b></p>'
+#	st.markdown(titulo_plot06c, unsafe_allow_html=True)
+#	st.plotly_chart(fig_S, use_container_width=True)
 
-with col2: 
-	titulo_plot06d =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Centro-Oeste</b></p>'
-	st.markdown(titulo_plot06d, unsafe_allow_html=True)
-	st.plotly_chart(fig_CO, use_container_width=True)
+#with col2: 
+#	titulo_plot06d =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Centro-Oeste</b></p>'
+#	st.markdown(titulo_plot06d, unsafe_allow_html=True)
+#	st.plotly_chart(fig_CO, use_container_width=True)
 
-titulo_plot06e =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Sudeste</b></p>'
-st.markdown(titulo_plot06e, unsafe_allow_html=True)
-st.plotly_chart(fig_SE, use_container_width=True)
+#titulo_plot06e =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Sudeste</b></p>'
+#st.markdown(titulo_plot06e, unsafe_allow_html=True)
+#st.plotly_chart(fig_SE, use_container_width=True)
+
+
+# ------------------------------------------------------------------------
+# Exibe selecionando a região
+# ------------------------------------------------------------------------
+l_regioes = ['Nordeste','Norte','Sul','Centro-Oeste','Sudeste']
+# Adicione um widget de seleção para escolher a região
+regiao_selecionada = st.selectbox("Selecione a região", l_regioes)
+
+# ...
+
+if regiao_selecionada:
+    if regiao_selecionada == 'Nordeste':
+        titulo_plot06 =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Nordeste</b></p>'
+        fig_NE = px.bar(distr_cursos_reg_area_NE.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
+             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
+             color_discrete_sequence=px.colors.diverging.Spectral,
+             barmode = 'group', width=1000, height=700)
+        fig_NE.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
+                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9))
+
+        st.markdown(titulo_plot06, unsafe_allow_html=True)
+        st.plotly_chart(fig_NE, use_container_width=True)
+    elif regiao_selecionada == 'Norte':
+        titulo_plot06 =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Norte</b></p>'
+        
+    
+        fig_N = px.bar(distr_cursos_reg_area_N.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
+             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
+             color_discrete_sequence=px.colors.diverging.Spectral,
+             barmode = 'group', width=1000, height=700)
+        fig_N.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
+                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9))  
+        st.markdown(titulo_plot06, unsafe_allow_html=True)
+        st.plotly_chart(fig_N, use_container_width=True)
+    
+    elif regiao_selecionada == 'Sul':
+        titulo_plot06 =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Sul</b></p>'
+        
+        fig_S = px.bar(distr_cursos_reg_area_S.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
+             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
+             color_discrete_sequence=px.colors.diverging.Spectral,
+             barmode = 'group', width=1000, height=700)
+        fig_S.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
+                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9))
+        st.markdown(titulo_plot06, unsafe_allow_html=True)
+        st.plotly_chart(fig_S, use_container_width=True)
+
+    elif regiao_selecionada == 'Centro-Oeste':
+        titulo_plot06 =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Centro-Oeste</b></p>'
+        fig_CO = px.bar(distr_cursos_reg_area_CO.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
+             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
+             color_discrete_sequence=px.colors.diverging.Spectral,
+             barmode = 'group', width=1000, height=700)
+        fig_CO.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
+                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9))
+        st.markdown(titulo_plot06, unsafe_allow_html=True)
+        st.plotly_chart(fig_CO, use_container_width=True)
+    elif regiao_selecionada == 'Sudeste':
+        titulo_plot06 =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Sudeste</b></p>'
+        fig_SE = px.bar(distr_cursos_reg_area_SE.sort_values(by='NO_CINE_AREA_GERAL', ascending=True),
+             x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
+             color_discrete_sequence=px.colors.diverging.Spectral, 
+             barmode = 'group', width=1000, height=700)
+        fig_SE.update_layout(yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
+                  xaxis=dict(title=''), legend=dict(x=0.03,y=0.9))
+        st.markdown(titulo_plot06, unsafe_allow_html=True)
+        st.plotly_chart(fig_SE, use_container_width=True)
+
+# ------------------------------------------------------------------------
+# Plot07:Exibe todas as  regiões
+# ------------------------------------------------------------------------        
+
+# Criação do segundo gráfico com o cruzamento de dados de todas as regiões
+titulo_plot07 =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Cruzamento de Dados entre Todas as Regiões</b></p>'
+st.markdown(titulo_plot07, unsafe_allow_html=True)
+
+# Cria o gráfico de barras agrupadas
+fig_todas_regioes = px.bar(distr_cursos_reg_area, x='NO_REGIAO', y='Total_Cursos', color='AREA_GERAL2',
+                           color_discrete_sequence=px.colors.diverging.Spectral,
+                           barmode='group', width=1000, height=700)
+
+# Define os títulos e labels
+fig_todas_regioes.update_layout(
+    yaxis=dict(title='Total Cursos', titlefont_size=20, tickfont_size=12),
+    xaxis=dict(title='Regiões', titlefont_size=20, tickfont_size=12),
+    legend=dict(x=0.03, y=0.9)
+)
+
+# Exibe o gráfico
+st.plotly_chart(fig_todas_regioes, use_container_width=True)
