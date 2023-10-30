@@ -43,7 +43,7 @@ def carrega_df():
 	df_all = pd.read_csv('./arquivos/dados_cursos_2012_2022.csv', sep='|', 
 						low_memory=False, 
 						usecols=['NU_ANO_CENSO','Tipo_Cat_Admn','Tipo_Org_Acad','Tipo_Org_Principal', 'Tipo_Grau_Acad','Tipo_Rede',
-						'NO_CINE_AREA_GERAL', 'NO_CURSO'])
+						'NO_CINE_AREA_GERAL', 'NO_CURSO','QT_CURSO','QT_MAT','QT_ING','QT_CONC'])
 	return df_all
 df_all = carrega_df()	
 
@@ -315,15 +315,15 @@ def formata_area_geral(x):
 # ------------------------------------------------------------------------
 # Carrega dados Cursos
 # ------------------------------------------------------------------------
-st.cache_data
+# st.cache_data
 # carregar algumas colunas pois a carga do df é demorado
-def carrega_df():
-	df_all = pd.read_csv('./arquivos/dados_cursos_2012_2022.csv', sep='|', 
-						low_memory=False, 
-						usecols=['NU_ANO_CENSO','NO_CINE_AREA_GERAL','QT_CURSO','QT_MAT','QT_ING','QT_CONC'])
-	return df_all
+# def carrega_df():
+	# df_all = pd.read_csv('./arquivos/dados_cursos_2012_2022.csv', sep='|', 
+						# low_memory=False, 
+						# usecols=['NU_ANO_CENSO','NO_CINE_AREA_GERAL','QT_CURSO','QT_MAT','QT_ING','QT_CONC'])
+	# return df_all
 
-df_all = carrega_df()	
+# df_all = carrega_df()	
 
 # ------------------------------------------------------------------------				  
 # Prepara df: Distribuição dos cursos
