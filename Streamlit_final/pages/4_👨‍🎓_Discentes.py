@@ -506,7 +506,7 @@ st.markdown("---")
 # Plot02: 18 a 24
 # ------------------------------------------------------------------------
 titulo_plot02 =  '<p style="font-family:Courier; color:Black; font-size: 23px;"><b>Visualização da Evolução das Matrículas, Ingressantes e Concluintes PRESENCIAIS - Faixa: 18 a 24 anos</b></p>'
-st.markdown(titulo_plot01, unsafe_allow_html=True)
+st.markdown(titulo_plot02, unsafe_allow_html=True)
 
 df1 = serie_matr_faixas[serie_matr_faixas['Faixa_etaria']=='QT_MAT_18_24'].rename(columns={'Total_MAT':'Total'})
 df2 = serie_ingr_faixas[serie_ingr_faixas['Faixa_etaria']=='QT_ING_18_24'].rename(columns={'Total_Ingress':'Total'})
@@ -526,7 +526,7 @@ st.markdown("---")
 # Plot03: 25 a 29
 # ------------------------------------------------------------------------
 titulo_plot03 =  '<p style="font-family:Courier; color:Black; font-size: 23px;"><b>Visualização da Evolução das Matrículas, Ingressantes e Concluintes PRESENCIAIS - Faixa: 25 a 29 anos</b></p>'
-st.markdown(titulo_plot01, unsafe_allow_html=True)
+st.markdown(titulo_plot03, unsafe_allow_html=True)
 
 df1 = serie_matr_faixas[serie_matr_faixas['Faixa_etaria']=='QT_MAT_25_29'].rename(columns={'Total_MAT':'Total'})
 df2 = serie_ingr_faixas[serie_ingr_faixas['Faixa_etaria']=='QT_ING_25_29'].rename(columns={'Total_Ingress':'Total'})
@@ -546,7 +546,7 @@ st.markdown("---")
 # Plot04: 30 a 34
 # ------------------------------------------------------------------------
 titulo_plot04 =  '<p style="font-family:Courier; color:Black; font-size: 23px;"><b>Visualização da Evolução das Matrículas, Ingressantes e Concluintes PRESENCIAIS - Faixa: 30 a 34 anos</b></p>'
-st.markdown(titulo_plot01, unsafe_allow_html=True)
+st.markdown(titulo_plot04, unsafe_allow_html=True)
 
 df1 = serie_matr_faixas[serie_matr_faixas['Faixa_etaria']=='QT_MAT_30_34'].rename(columns={'Total_MAT':'Total'})
 df2 = serie_ingr_faixas[serie_ingr_faixas['Faixa_etaria']=='QT_ING_30_34'].rename(columns={'Total_Ingress':'Total'})
@@ -566,7 +566,7 @@ st.markdown("---")
 # Plot05: 35 a 39
 # ------------------------------------------------------------------------
 titulo_plot05 =  '<p style="font-family:Courier; color:Black; font-size: 23px;"><b>Visualização da Evolução das Matrículas, Ingressantes e Concluintes PRESENCIAIS - Faixa: 35 a 39 anos</b></p>'
-st.markdown(titulo_plot01, unsafe_allow_html=True)
+st.markdown(titulo_plot05, unsafe_allow_html=True)
 
 df1 = serie_matr_faixas[serie_matr_faixas['Faixa_etaria']=='QT_MAT_35_39'].rename(columns={'Total_MAT':'Total'})
 df2 = serie_ingr_faixas[serie_ingr_faixas['Faixa_etaria']=='QT_ING_35_39'].rename(columns={'Total_Ingress':'Total'})
@@ -586,7 +586,7 @@ st.markdown("---")
 # Plot06: Acima 40
 # ------------------------------------------------------------------------
 titulo_plot06 =  '<p style="font-family:Courier; color:Black; font-size: 23px;"><b>Visualização da Evolução das Matrículas, Ingressantes e Concluintes PRESENCIAIS - Faixa: Acima de 40 anos</b></p>'
-st.markdown(titulo_plot01, unsafe_allow_html=True)
+st.markdown(titulo_plot06, unsafe_allow_html=True)
 
 df1 = serie_matr_faixas[serie_matr_faixas['Faixa_etaria']=='QT_MAT_40_49'].rename(columns={'Total_MAT':'Total'})
 df2 = serie_ingr_faixas[serie_ingr_faixas['Faixa_etaria']=='QT_ING_40_49'].rename(columns={'Total_Ingress':'Total'})
