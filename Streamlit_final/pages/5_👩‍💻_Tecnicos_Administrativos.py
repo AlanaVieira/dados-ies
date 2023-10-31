@@ -1,7 +1,6 @@
 import streamlit as st
 import datetime
 from datetime import datetime
-import os
 
 # Analise
 import pandas as pd 
@@ -42,7 +41,7 @@ sns.set(style="darkgrid")
 # ------------------------------------------------------------------------
 @st.cache_data 
 def carregar_dados_taes():
-    data = pd.read_csv("../arquivos/dados_ies_taes_docentes_2012_2022.csv", low_memory=False)
+    data = pd.read_csv("./arquivos/dados_ies_taes_docentes_2012_2022.csv", low_memory=False)
     return data
 dados = carregar_dados_taes() 
 
