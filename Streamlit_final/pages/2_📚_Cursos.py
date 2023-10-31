@@ -130,6 +130,14 @@ axes.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), fancybox=True, shad
 
 st.pyplot(f)
 
+# ------------------------------------------------------------------------
+# Plot01: Análise
+# ------------------------------------------------------------------------
+st.subheader("Principais Resultados")
+st.write("Ao analisarmos a série temporal que abrange o período de 2012 a 2022, notamos distintos comportamentos entre as entidades públicas e as privadas, seja com fins lucrativos ou sem fins lucrativos.")
+st.write("As entidades públicas mantiveram um padrão de crescimento constante, caracterizado por um aumento pequeno, gradual e linear ao longo dos anos. Por outro lado, as instituições privadas, tanto com fins lucrativos quanto sem fins lucrativos, apresentaram uma dinâmica mais variada.")
+st.write("Entre os anos de 2017 e 2018, observamos uma inversão no padrão de crescimento dessas entidades privadas. Nesse período, houve uma significativa inflexão, marcando o início de um declínio, enquanto as entidades privadas iniciaram um notável avanço. Este movimento representa uma mudança substancial na dinâmica educacional, onde as instituições privadas passaram a ocupar um espaço de destaque no cenário educacional, impulsionando o crescimento do setor.")
+st.write("Esse contraste na evolução entre as entidades públicas e privadas nos oferece uma visão abrangente da complexa dinâmica do sistema educacional ao longo dos anos analisados.")
 st.markdown("---")
 
 # ------------------------------------------------------------------------
@@ -200,6 +208,16 @@ with col2:
 	fig.update_traces(textposition='inside', insidetextfont=dict(color='white', size=16,family='Times New Roman'))
 	
 	st.plotly_chart(fig, use_container_width=True)
+
+# ------------------------------------------------------------------------
+# Plot03: Análise
+# ------------------------------------------------------------------------
+st.subheader("Principais Resultados")
+st.write("Podemos notar uma tendência de crescimento contínuo na oferta de cursos. Esse crescimento experimentou um notável impulso por volta de 2017, seguido por uma estabilização em uma escala ligeiramente menor.")
+
+st.write("Ao analisamos as categorias, fica evidente que a maioria dos cursos é ofertada por entidades privadas. Além disso, as Faculdades e Universidades se destacam como as organizações que são as que mais oferecem cursos. Por outro lado, os Institutos Federais apresentam um número menor de ofertas em comparação com as outras categorias.")
+
+st.write("Essa análise demonstra a dinâmica da evolução da oferta de cursos ao longo do tempo e ressalta o papel significativo desempenhado pelas instituições privadas, pelas Faculdades e Universidades no cenário educacional brasileiro.")
 
 st.markdown("---")
 
@@ -390,7 +408,16 @@ if ano_selecionado:
     
     st.plotly_chart(fig, use_container_width=True)
     
-    
+# ------------------------------------------------------------------------
+# Plot01: Análise
+# ------------------------------------------------------------------------
+st.subheader("Principais Resultados")
+st.write("O mapa de calor nos revela como as tendências no mercado de trabalho exercem influência sobre as preferências acadêmicas nas universidades.")
+
+st.write("Podemos observar uma notável mudança nos cursos mais procurados ao longo dos anos. Em 2012, a grande área predominante era 'Negócios, Administração e Direito'. Contudo, ao chegarmos em 2022, percebemos uma transição marcante, com 'Saúde e Bem-Estar' emergindo como a área de maior destaque.")
+
+st.write("Essa análise demonstra claramente a dinâmica do mercado e sua capacidade de moldar as preferências dos estudantes, bem como a adaptabilidade das instituições de ensino para atender a essas demandas em constante evolução.")
+st.markdown('---')    
 
 # ------------------------------------------------------------------------
 # PARTE 03 - Analise Cursos - Ano Atual: 2022 
@@ -557,7 +584,12 @@ with col2:
 	st.markdown(titulo_plot01, unsafe_allow_html=True)
 	st.pyplot(fig, use_container_width=True)
 	
-st.markdown("---")
+# ------------------------------------------------------------------------
+# Plot01: Análise
+# ------------------------------------------------------------------------
+st.subheader("Principais Resultados")
+st.write("Os dados foram analisados de forma a identificar os cursos ofertados pelas IES do Brasil, o que em 2022 era de 35.765. Analisando apenas os 10 cursos mais frequentes, identificou-se um total de 12.866 cursos ofertados. Destacaram-se nesse rank aqueles ligados a área geral de negócios, administração e direito, com os cursos de Administração, Direito e Ciências Contábeis (14,03% do total de cursos do país e 38,98% do cursos do TOP 10). Em segundo lugar no rank dos Top 10 estão os cursos da área de saúde e bem-estar, como Educação Física, Enfermagem e Fisioterapia (9,73% do total de cursos do país e 27,05% dos cursos TOP 10).")
+st.markdown('---')
 
 # ------------------------------------------------------------------------
 # Plot02: Top 5 cursos mais oferecidos em cada UF
@@ -584,7 +616,16 @@ fig.update_layout(hoverlabel=dict(bgcolor="white",
                                   font_family="Rockwell"))				  
 
 st.plotly_chart(fig, use_container_width=True)
-st.markdown("---")
+
+# ------------------------------------------------------------------------
+# Plot02: Análise
+# ------------------------------------------------------------------------
+
+st.subheader("Principais Resultados")
+st.write("Enquanto a análise dos TOP 5 cursos de cada UF permitiu identificar 10 diferentes cursos distribuídos entre os estados. A análise dos Top 5 de cada região do país foi mais uniforme, resultando em 6 diferentes cursos mais prevalentes: Administração, Direito, Educação Física, Pedagogia, Ciências Contábeis e Enfermagem.") 
+st.write("Assim como na avaliação por estados, os cursos de Administração e Direito estão presentes nos TOP 5 de todas as regiões, associados agora também à presença do curso de Pedagogia.") 
+st.write("Os cursos de Educação Física só não estão presente no TOP 5 da região Norte e os de Ciências Contábeis no Nordeste. A Enfermagem, por sua vez, aparece no TOP 5 apenas nas regiões Norte e Nordeste, em substiuição aos outros dois cursos.")
+st.markdown('---')
 
 # ------------------------------------------------------------------------
 # Plot03: Total de Cursos Presenciais por UF/ Tipo Rede
@@ -668,6 +709,15 @@ fig.update_layout(hoverlabel=dict(bgcolor="white",
 
 st.plotly_chart(fig, use_container_width=True)		
 
+# ------------------------------------------------------------------------
+# Plot05: Análise
+# ------------------------------------------------------------------------
+st.subheader("Principais Resultados")
+st.write("A distribuição da quantidade de cursos presenciais por estado e tipo de instituição revela alguns padrões. Como podemos observar, São Paulo se destaca como o estado com o maior número de instituições privadas de ensino em todo o Brasil. Enquanto isso, Minas Gerais lidera na quantidade de entidades públicas.")
+
+st.write("Além disso, nota-se uma alta concentração de institutos federais também em São Paulo, o que também se reflete nas faculdades e centros universitários. Isso indica a presença robusta dessas instituições no estado.")
+
+st.write("Outro ponto notável é a preferência dos paulistas por cursos de bacharelado e tecnólogos, sugerindo uma inclinação específica nas escolhas educacionais dessa população.")
 st.markdown("---")
 
 # ------------------------------------------------------------------------
@@ -757,3 +807,12 @@ with col2:
 titulo_plot06e =  '<p style="text-align: center; font-family:Courier; color:Blue; font-size: 20px;"><b>Regiao Sudeste</b></p>'
 st.markdown(titulo_plot06e, unsafe_allow_html=True)
 st.plotly_chart(fig_SE, use_container_width=True)
+
+# ------------------------------------------------------------------------
+# Plot07: Análise
+# ------------------------------------------------------------------------
+st.subheader("Principais Resultados")
+st.write("Assim como, de forma geral, o Brasil possui uma grande quantidade de instituições privadas de ensino superior, totalizando 88% do total de IES; a análise por cursos também indica uma superioridade numérica e proporcional daqueles ofertados por IES privadas. Em números absolutos, a região sudeste destaca-se com uma grande concentração de cursos ofertados, principalmente nos estados de São Paulo, Minas Gerais e Rio de Janeiro.")
+
+st.write("Além disso, a região Sudeste lidera em quantidade de cursos nas áreas de 'Negócios, Administração e Direito' e 'Saúde e Bem-Estar'. Em segundo lugar, o Nordeste também apresenta uma quantidade significativa de cursos nessas mesmas áreas. Observa-se uma tendência consistente em todas as regiões: os cursos menos ofertados estão nas áreas de serviços, com exceção do Nordeste, onde a menor oferta é na categoria de 'Ciências Naturais, Matemática e Estatística'.")
+st.markdown('---')
