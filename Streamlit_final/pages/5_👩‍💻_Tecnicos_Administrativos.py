@@ -200,6 +200,6 @@ with col4:
 st.subheader("Principais Resultados")
 st.write("Ao analisarmos a série temporal que abrange o período de 2012 a 2022, percebemos que a região Sul é a que apresenta maior número de TAEs por alunos matriculados, impulsionado pelas Privadas.\
     Entre as públicas a região Sudeste é a que apresenta maior número de TAEs/Aluno, porém em grande queda de 2016 a 2020. Dentre as privadas, as com fins lucrativos são as que apresentam o menor numero de TAES.")
-st.write("A relação entre homens e mulheres TAEs é bastante proporcional nas publicas, e nas privas o numero de homens é um pouco maior. quanto a escolaridade, nas privadas o maior numero de TAEs são com superior incompleto, e dos que possuem formação superior as mulheres são maioria.\
-    Nas públicas as mulheres se destacam pela maior escolaridade.")
+st.write("A relação entre homens e mulheres TAEs é bastante proporcional nas públicas, e nas privadas o número de homens é um pouco maior. Quanto à escolaridade, nas privadas o maior numero de TAEs são com superior incompleto, e dos que possuem formação superior as mulheres são maioria.\
+    Nas públicas as mulheres também se destacam pela maior escolaridade.")
 st.markdown("---")    
