@@ -1,0 +1,9 @@
+dados_ies_consolidado.csv
+dados_ies_agg_UF.csv
+dados_IES_agg_Regiao.csv
+dados_cursos_escopo_consolidado.csv
+dados_cursos_2012_2022_reduzida01.csv
+
+pode ser que precise de outros arquivos! 
+
+
