@@ -1,21 +1,14 @@
 import pandas as pd
 import streamlit as st
-#import altair as alt
 from streamlit_option_menu import option_menu
 from PIL import Image
 import plotly.express as px
-#from numerize.numerize import numerize
 import os
-#import requests
-#import pickle
 
-
-
-#@st.cache
 
 ########## CONFIGURAÇÃO DA PÁGINA########
 st.set_page_config(
-    page_title='ANÁLISE IES Brasil',
+    page_title='Analise IES Brasil',
     page_icon='📊',
     layout='wide',
     initial_sidebar_state='expanded',
@@ -25,10 +18,6 @@ st.set_page_config(
         'About': "Esse app foi desenvolvido no curso ENAP ."
     }
 )
-####### --- Criar o dataframe########################
-
-#df = pd.read_csv('./arquivos/MICRODADOS_ED_SUP_IES_2022.CSV', encoding='latin-1', sep=';')
-#df_ies = pd.read_csv('./arquivos/dados_cursos_escopo_consolidado.csv', encoding='utf-8', sep='|')
 
 header_left, header_mid, header_right = st.columns([1, 3, 1], gap="large")
 ##############################################################################
